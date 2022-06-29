@@ -1,0 +1,12 @@
+
+.dodajform {
+    -webkit-border-radius: 10px 10px 10px 10px;
+  	border-radius: 10px 10px 10px 10px;
+  	background: #fff;
+	margin: 9vh auto;
+    width:40vw;
+  	padding: 20px;
+  	-webkit-box-shadow: 5px 25px 60px 5px rgba(0,0,0,0.4);
+  	box-shadow: 5px 25px 60px 5px rgba(0,0,0,0.4);
+	position:relative;
+}
