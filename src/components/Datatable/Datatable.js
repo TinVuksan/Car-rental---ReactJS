@@ -4,7 +4,7 @@ import {useState, useEffect} from "react"
 import Table from "react-bootstrap/Table"
 import Button from "react-bootstrap/Button"
 import {useNavigate} from "react-router-dom"
-
+import {format} from "date-fns"
 import "./Datatable.css"
 
 
@@ -25,6 +25,7 @@ export default function Datatable(props) {
         .then((res) => {
             console.log(res.data);
             const Array = res.data
+            console.log(Array.Registracija)
             setData(Array)
         })
         .catch((error) => {
@@ -105,10 +106,10 @@ export default function Datatable(props) {
                     {vozilo.Vrsta_vozila}
                 </td>
                 <td>
-                    {vozilo.Registracija}
+                {format(new Date(vozilo.Registracija), 'dd.MM.yyyy')}
                 </td>
                 <td>
-                    {vozilo.Istek_registracije}
+                {format(new Date(vozilo.Istek_registracije), 'dd.MM.yyyy')}
                 </td>
                 <td>
                     <Button variant = "danger" onClick = {() => deleteRow(vozilo.idVozila)}>Obriši</Button>

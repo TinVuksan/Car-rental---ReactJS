@@ -1,5 +1,6 @@
 import React from "react"
 import "../Navbar/Navbar.css"
+import "./Pocetna.css"
 import Navbar from "../Navbar/Navbar"
 import Datatable from "../Datatable/Datatable"
 import Card from "../Card/Card"
@@ -14,7 +15,7 @@ export default function Pocetna() {
         setChecked(event.target.checked)
         console.log(checked)
     }
-    
+
     return (
         <>
         <Navbar />
