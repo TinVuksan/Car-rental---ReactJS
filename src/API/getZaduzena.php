@@ -13,7 +13,7 @@ $oJson=array();
 	
 	
 	
-		$sQuery="SELECT * FROM vozila WHERE vozilo_zaduzeno = 0";
+		$sQuery="SELECT * FROM vozila WHERE vozilo_zaduzeno = 1";
 		$oRecord=$conn->query($sQuery);
 		//var_dump($oRecord->fetch(PDO::FETCH_BOTH));
 		while($oRow=$oRecord->fetch(PDO::FETCH_ASSOC))

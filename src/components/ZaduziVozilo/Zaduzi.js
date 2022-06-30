@@ -5,10 +5,7 @@ import Datatable from "../Datatable/Datatable"
 import Card from "../Card/Card"
 import {useState} from "react"
 import {Switch, FormControlLabel} from "@mui/material"
-
-
-
-export default function Pocetna() {
+export default function Zaduzi() {
     const [checked, setChecked] = useState(true)
     const handleChange = (event) => {
         setChecked(event.target.checked)
@@ -30,13 +27,12 @@ export default function Pocetna() {
         
         {checked ? 
         <div className = "cards">
-        <Card zaduzenje = {false}/>
+        <Card zaduzenje = {true}/>
         </div> : 
-        <Datatable zaduzenje = {false}/>
+        <Datatable zaduzenje = {true}/>
         }
         
         </>
         
     )
-    
 }

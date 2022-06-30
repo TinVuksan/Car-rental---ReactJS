@@ -1,6 +1,10 @@
+
 .tablica  {
     
     margin: 35px auto;
-    width:1100px;
-    font-size:25px;
+    width:80vw;
+    height:max-content;
+    font-size:28px;
+    letter-spacing: 0.05rem;
+
 }

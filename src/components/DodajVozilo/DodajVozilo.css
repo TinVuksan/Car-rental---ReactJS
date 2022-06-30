@@ -10,3 +10,8 @@
   	box-shadow: 5px 25px 60px 5px rgba(0,0,0,0.4);
 	position:relative;
 }
+
+.dodajform-title {
+	text-align: center;
+	margin-bottom:15px;
+} 

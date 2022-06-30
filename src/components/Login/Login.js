@@ -34,6 +34,7 @@ export default function Login() {
 		var params = new URLSearchParams();
         params.append('mail', formData.mail);
         params.append('lozinka', formData.lozinka);
+		console.log(params);
 		Axios.post("http://localhost/voznipark/src/API/login.php",params).then((response) => {
 			if(response.data) {
 				window.sessionStorage.setItem("prijava", true)
@@ -47,7 +48,7 @@ export default function Login() {
         <>
 
         <div className="loginbox">
-		<h1 className = "login-title"><b>Prijavi se!</b></h1>
+		<h1 className = "login-title"><b>Dobrodošli!</b></h1>
 		<form id="login-form">
 
 		<div className="form-floating mb-3">				
@@ -81,7 +82,7 @@ export default function Login() {
 
 		
 		<Button id="login-btn" variant = "outline-dark" onClick = {handleSubmit}>
-			Prijavi se!
+			PRIJAVA
 		</Button>
 
 		</form>

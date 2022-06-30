@@ -1,23 +1,32 @@
-import React from "react"
+import React, { useEffect } from "react"
 import "./DodajVozilo.css"
 import Navbar from "../Navbar/Navbar"
 import Form from "react-bootstrap/Form"
 import FloatingLabel from 'react-bootstrap/FloatingLabel'
-import Datepicker from "react-date-picker"
 import {useState} from "react"
 import Button from "react-bootstrap/Button"
 import Axios from "axios"
 import { useNavigate } from "react-router-dom"
-import {format} from "date-fns"
+import DatePicker from "react-date-picker"
+import {format, add, parseISO} from "date-fns"
+
+
+
 
 export default function DodajVozilo() {
+    
     const Navigate = useNavigate()
     const [value, setValue] = useState(new Date())
-    const [istekReg, setIstekReg] = useState(new Date())
+   // const [istekReg, setIstekReg] = useState(new Date())
+   const [istek, setIstek] = useState(new Date())
     const [formData, setFormData] = useState({
-		marka: "", model: "", vrsta: "", registracija: value, istek_registracije: istekReg, slika: ""
+		marka: "", model: "", vrsta: "", registracija: value,  slika: ""
 	})
+   
+   
 
+
+    
 
     const handleChange = (e) => {
         setFormData(prevFormData => {
@@ -25,30 +34,57 @@ export default function DodajVozilo() {
                 ...prevFormData,
                 [e.target.name]: e.target.value
             }
+            
         })
-        console.log(e.target.value);
+        
     }
-    const handleSubmit = () => {
+    const dodajVozilo = (marka,model,vrsta,registracija,istek,slika) => {
         var params = new URLSearchParams();
-        //idVozila,:Marka,:Model,:Vrsta_vozila,:Registracija,:Istek_registracije, :Slika
-        //var istek = formData.registracija.getFullYear();
-        params.append('marka_vozila', "Autekmali");
-        params.append('model_vozila', "A3");
-        params.append('vrsta_vozila', "Automobil");
-        params.append('registracija', formData.registracija);
-        params.append('istek_registracije', "2022-06-05");
-        params.append('slika', "hhhtpasdkpapsdasd")
-		Axios.post("http://localhost/voznipark/src/API/dodaj.php",params).then((response) => {
-			if(response.data) {
-                
+        
+        
+         params.append('marka_vozila', marka);
+         params.append('model_vozila', model);
+         params.append('vrsta_vozila', vrsta);
+         params.append('registracija', registracija);
+         params.append('istek_registracije', istek);
+         params.append('slika', slika);
+         Axios.post("http://localhost/voznipark/src/API/dodaj.php", params)
+         .then((response) => {
+			
+                console.log(response.data)
 				Navigate("/Pocetna", {replace:true})
-			}
-			console.log(response.config.data);
-            console.log(istekReg)
+			
 		})
-        .catch((error) => {
-            console.log(error)
-        })
+    }
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        let brojka = 0
+        switch(formData.vrsta) {
+            case "Automobil":
+            brojka = 1;
+            console.log("Ušlo auto/kamion")
+            break;
+
+            case "Kamion":
+            brojka = 1;
+            console.log("Ušlo auto/kamion")
+            break;
+
+            case "Motocikl":
+            brojka = 2;
+            console.log("Ušlo motor")
+            break;
+
+            case "Radni stroj":
+            brojka = 3;
+            console.log("Ušlo stroj")
+            break;
+
+        }
+        
+        dodajVozilo(formData.marka, formData.model, formData.vrsta, format(value, 'yyyy-MM-dd'), format(add(value, {years:brojka}), 'yyyy-MM-dd'), formData.slika)
+		console.log(formData);
+
     }
     
     return (
@@ -100,21 +136,19 @@ export default function DodajVozilo() {
             
         </Form.Group>
 
+        <Form.Group className = "mb-0">
+        <Form.Label>Odaberi datum registracije</Form.Label>
+        </Form.Group>
         <Form.Group className = "mb-4">
-        <Datepicker 
+        <DatePicker
         name = "registracija" 
-        locale = "hr-HR" 
-        onChange = {setValue} 
+        onChange = {setValue}  
         value = {value}
         format = "dd.MM.yyyy"
-        />
+        clearIcon = {null}
+        locale = "hr-HR"
 
-        <Datepicker 
-        name = "istek_registracije" 
-        locale = "hr-HR" 
-        onChange = {setIstekReg} 
-        value = {value.setFullYear(value.getFullYear()+1)}
-        format = "dd.MM.yyyy"
+
         />
         </Form.Group>
 
@@ -122,7 +156,7 @@ export default function DodajVozilo() {
             <Form.Label>Odaberi sliku vozila!</Form.Label>
             <Form.Control 
             onChange = {handleChange} 
-            type="file" 
+            type="text" 
             name = "slika" 
             value = {formData.slika}
             />

@@ -3,16 +3,16 @@ import Axios from "axios"
 import {useState, useEffect} from "react"
 import Table from "react-bootstrap/Table"
 import Button from "react-bootstrap/Button"
-import ShowModal from "./Modal"
+import {useNavigate} from "react-router-dom"
 
 import "./Datatable.css"
 
 
-export default function Datatable() {
+export default function Datatable(props) {
 
     const [data, setData] = useState([])
 
-
+    const navigate = useNavigate();
 
     useEffect(() => {
         getData()
@@ -54,17 +54,33 @@ export default function Datatable() {
             console.log(error)
         })
     }
+
+    const zaduziVozilo = (id) => {
+        if(window.confirm("Želite li sigurno zadužiti vozilo broj " + id + "?")) {
+            zaduziConfirm(id)
+        }
+    }
+
+    async function zaduziConfirm(id) {
+        const deleteURL = "http://localhost/voznipark/src/API/zaduzi.php"
+        var params = new URLSearchParams()
+        params.append("Id", id)
+        Axios.post(deleteURL, params).then(() => {
+            
+            navigate("/Pocetna/Vrati", {replace:true})
+        })
+        .catch((error) => {
+            console.log(error)
+        })
+    }
+
+    const urediVozilo = (id) => {
+        if(window.confirm("Uređujete vozilo broj " + id + "!")) {
+            navigate("/Pocetna", {replace:true})
+        }
+    }
     
 
-        
-      
-        
-          
-        
-      
-      
-   
-    
     return (
         <>
         <Table responsive striped bordered hover className = "tablica">
@@ -99,7 +115,7 @@ export default function Datatable() {
                     
                 </td>
                 <td>
-                 <Button variant = "success" onClick = {ShowModal}>Uredi</Button>
+                <Button variant = "success" onClick = {props.zaduzenje ? () => zaduziVozilo(vozilo.idVozila) : () => urediVozilo(vozilo.idVozila)}>{props.zaduzenje ? "Zaduži" : "Uredi"}</Button>
                 </td>
             </tr>)}
             
@@ -109,6 +125,7 @@ export default function Datatable() {
         </>
         
         
+
          
             
         
