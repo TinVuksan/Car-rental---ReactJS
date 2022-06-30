@@ -14,6 +14,7 @@ export default function Pocetna() {
         setChecked(event.target.checked)
         console.log(checked)
     }
+    
     return (
         <>
         <Navbar />
@@ -30,7 +31,7 @@ export default function Pocetna() {
         
         {checked ? 
         <div className = "cards">
-        <Card zaduzenje = {false}/>
+        <Card  zaduzenje = {false}/>
         </div> : 
         <Datatable zaduzenje = {false}/>
         }

@@ -18,7 +18,7 @@ export default function Datatable(props) {
         getData()
     }, [])
     
-    const headers = ["#", "Marka", "Model", "Vrsta vozila", "Registracija", "Istek registracije", "Obriši","Uredi"]
+    const headers = ["#", "Marka", "Model", "Vrsta vozila", "Registracija", "Istek registracije", "Obriši",  props.zaduzenje && "Uredi"]
 
     const getData = () => {
         Axios.get("http://localhost/voznipark/src/API/json.php")
@@ -115,7 +115,7 @@ export default function Datatable(props) {
                     
                 </td>
                 <td>
-                <Button variant = "success" onClick = {props.zaduzenje ? () => zaduziVozilo(vozilo.idVozila) : () => urediVozilo(vozilo.idVozila)}>{props.zaduzenje ? "Zaduži" : "Uredi"}</Button>
+                {props.zaduzenje && <Button variant = "success" onClick = {() => zaduziVozilo(vozilo.idVozila)}> Zaduži</Button>}
                 </td>
             </tr>)}
             
