@@ -5,12 +5,14 @@ import Datatable from "../Datatable/Datatable"
 import Card from "../Card/Card"
 import {useState} from "react"
 import {Switch, FormControlLabel} from "@mui/material"
-export default function Zaduzi() {
+export default function Zaduzi(props) {
     const [checked, setChecked] = useState(true)
     const handleChange = (event) => {
         setChecked(event.target.checked)
         console.log(checked)
+    
     }
+
     return (
         <>
         <Navbar />

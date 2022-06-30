@@ -12,7 +12,7 @@ export default function Navbar() {
         <nav className = "navbar">
             <a href="/Pocetna"><h3 className = "navbar-logo">GTA</h3></a>
             <div className = "navbar-routing">
-                <Link style = {{textDecoration:'none', color:'black'}}to = "/Pocetna/Dodaj"><h3 className = "navbar-link">Dodaj vozilo</h3></Link>
+                <Link style = {{textDecoration:'none', color:'black'}}to = "/Pocetna/Dodaj"><h3 className = "navbar-link" >Dodaj vozilo</h3></Link>
                 <Link style = {{textDecoration:'none', color:'black'}}to = "/Pocetna/Zaduzi"><h3 className = "navbar-link">Zaduži vozilo</h3></Link>
                 <Link style = {{textDecoration:'none', color:'black'}}to = "/Pocetna/Vrati"><h3 className = "navbar-link">Vrati vozilo</h3></Link>
             </div>
