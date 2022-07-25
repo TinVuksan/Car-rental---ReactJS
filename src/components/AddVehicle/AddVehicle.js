@@ -50,7 +50,7 @@ export default function DodajVozilo() {
          .then((response) => {
 			
                 console.log(response.data)
-				Navigate("/Pocetna", {replace:true})
+				Navigate("/Home", {replace:true})
 			
 		})
     }
@@ -121,7 +121,7 @@ export default function DodajVozilo() {
             
             <Form.Select 
             onChange = {handleChange} 
-            name = "Vehicle type" 
+            name = "vrsta" 
             value = {formData.vrsta}
             >
                 <option>Vehicle type</option>

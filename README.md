@@ -17,6 +17,31 @@ go through the pages without refreshing, using functions that makes the app maki
 Next thing I'll implement on this page is better authentication system and graphical statistics
 
 
+## Images
+
+### Login screen
+![Login screen](./images/Login.PNG)
+
+### Home page
+![Home page](./images/Homepage.PNG)
+
+### Toggle view mode
+![View change feature](./images/ToggleView.PNG)
+
+### Edit vehicle
+![Edit vehicle feature](./images/Edit.PNG)
+
+### Add a vehicle
+![Add vehicle feature](./images/Add-vehicle.PNG)
+
+### Rent a vehicle
+![Rent vehicle feature](./images/Rent.PNG)
+
+### Return a vehicle
+![Return vehicle feature](./images/Return.PNG)
+
+##
+
 
 ### Made by: Tin Vukšan
 

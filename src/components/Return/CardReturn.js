@@ -63,7 +63,7 @@ export default function Card(props) {
                 <h3>Registriran do: {format(new Date(data.Istek_registracije), 'dd.MM.yyyy')}</h3>
             </div>
             <div className = "card-vrati-footer">
-                <Button className = "card-vrati-btn" variant = "info" onClick = {() => vratiVozilo(data.idVozila)}>Vrati vozilo</Button>
+                <Button className = "card-vrati-btn" variant = "info" onClick = {() => vratiVozilo(data.idVozila)}>Return vehicle</Button>
             </div>
         </div>)
         
