@@ -1,11 +1,11 @@
 import React from "react"
 import { BrowserRouter as Router, Routes,  Route } from "react-router-dom"
 import Login from "./Login/Login"
-import Pocetna from "./Pocetna/Pocetna"
-import ZaduziVozilo from "./ZaduziVozilo/Zaduzi"
-import DodajVozilo from "./DodajVozilo/DodajVozilo"
-import Vrati from "./Vrati/Vrati"
-import Uredi from "./Uredi/Uredi"
+import Homepage from "./Homepage/Homepage"
+import Rent from "./Rent/Rent"
+import AddVehicle from "./AddVehicle/AddVehicle"
+import Return from "./Return/Return"
+
 
 export default function App() {
     return (
@@ -13,11 +13,10 @@ export default function App() {
         <Router>
             <Routes>
                 <Route path = "/" element = {<Login></Login>} />
-                <Route path = "/Pocetna" element = {<Pocetna ></Pocetna>} />
-                <Route path = "/Pocetna/Dodaj" element = {<DodajVozilo></DodajVozilo>} />
-                <Route path = "/Pocetna/Zaduzi" element = {<ZaduziVozilo></ZaduziVozilo>} />
-                <Route path = "/Pocetna/Vrati" element = {<Vrati></Vrati>} />
-                <Route path = "Pocetna/Uredi" element = {<Uredi></Uredi>} />
+                <Route path = "/Home" element = {<Homepage ></Homepage>} />
+                <Route path = "/Home/Add" element = {<AddVehicle></AddVehicle>} />
+                <Route path = "/Home/Rent" element = {<Rent></Rent>} />
+                <Route path = "/Home/Return" element = {<Return></Return>} />
             </Routes>
         </Router>
         </>

@@ -1,10 +1,7 @@
 import React from "react"
 import "../Navbar/Navbar.css"
 import Navbar from "../Navbar/Navbar"
-import Datatable from "../Datatable/Datatable"
-import CardVrati from "./CardVrati"
-import {useState} from "react"
-import {Switch, FormControlLabel} from "@mui/material"
+import CardReturn from "./CardReturn"
 export default function Vrati() {
 
     
@@ -12,7 +9,7 @@ export default function Vrati() {
         <>
         <Navbar />
         <div className = "cards">
-        <CardVrati />
+        <CardReturn />
         </div> 
         </>
         

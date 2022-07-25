@@ -24,7 +24,6 @@ export default function Login() {
 		}
 			
 		})
-		console.log(e.target.value)
 		
 
 	}
@@ -38,9 +37,8 @@ export default function Login() {
 		Axios.post("http://localhost/voznipark/src/API/login.php",params).then((response) => {
 			if(response.data) {
 				window.sessionStorage.setItem("prijava", true)
-				navigate("/Pocetna", {replace:true})
+				navigate("/Home", {replace:true})
 			}
-			console.log(response)
 		})
 	}
 
@@ -48,7 +46,7 @@ export default function Login() {
         <>
 
         <div className="loginbox">
-		<h1 className = "login-title"><b>Dobrodošli!</b></h1>
+		<h1 className = "login-title"><b>Welcome!</b></h1>
 		<form id="login-form">
 
 		<div className="form-floating mb-3">				
@@ -57,7 +55,7 @@ export default function Login() {
 				className="form-control" 
 				type="email" 
 				name="mail" 
-				placeholder="ime@primjer.com" 
+				placeholder="yourmail@domain.com" 
 				value = {formData.mail}
 				onChange = {handleChange}
 				required
@@ -71,18 +69,18 @@ export default function Login() {
 				className="form-control"
 				type="password" 
 				name="lozinka" 
-				placeholder="Lozinka" 
+				placeholder="Enter your password..." 
 				onChange = {handleChange} 
 				value = {formData.lozinka}
                 required
 				/>	
-				<label htmlFor = "login-lozinka">Lozinka</label>			
+				<label htmlFor = "login-lozinka">Password</label>			
 		</div>
 
 
 		
 		<Button id="login-btn" variant = "outline-dark" onClick = {handleSubmit}>
-			PRIJAVA
+			LOGIN
 		</Button>
 
 		</form>

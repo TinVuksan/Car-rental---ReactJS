@@ -35,7 +35,7 @@ export default function Datatable(props) {
     }
 
     const deleteRow = (id) => {
-        if(window.confirm("Zelite li obrisati vozilo br " + id)) 
+        if(window.confirm("Are you sure you want to delete vehicle no. " + id + "?")) 
             {
                 deleteConfirm(id)
             }
@@ -57,7 +57,7 @@ export default function Datatable(props) {
     }
 
     const zaduziVozilo = (id) => {
-        if(window.confirm("Želite li sigurno zadužiti vozilo broj " + id + "?")) {
+        if(window.confirm("Are you sure you want to rent vehicle no. " + id + "?")) {
             zaduziConfirm(id)
         }
     }
@@ -75,12 +75,6 @@ export default function Datatable(props) {
         })
     }
 
-    const urediVozilo = (id) => {
-        if(window.confirm("Uređujete vozilo broj " + id + "!")) {
-            navigate("/Pocetna", {replace:true})
-        }
-    }
-    
 
     return (
         <>
@@ -112,11 +106,11 @@ export default function Datatable(props) {
                 {format(new Date(vozilo.Istek_registracije), 'dd.MM.yyyy')}
                 </td>
                 <td>
-                    <Button variant = "danger" onClick = {() => deleteRow(vozilo.idVozila)}>Obriši</Button>
+                    <Button variant = "danger" onClick = {() => deleteRow(vozilo.idVozila)}>Delete</Button>
                     
                 </td>
                 <td>
-                {props.zaduzenje && <Button variant = "success" onClick = {() => zaduziVozilo(vozilo.idVozila)}> Zaduži</Button>}
+                {props.zaduzenje && <Button variant = "success" onClick = {() => zaduziVozilo(vozilo.idVozila)}> Rent</Button>}
                 </td>
             </tr>)}
             

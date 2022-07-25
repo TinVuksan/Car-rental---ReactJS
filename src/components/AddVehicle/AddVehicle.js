@@ -1,5 +1,5 @@
-import React, { useEffect } from "react"
-import "./DodajVozilo.css"
+import React from "react"
+import "./AddVehicle.css"
 import Navbar from "../Navbar/Navbar"
 import Form from "react-bootstrap/Form"
 import FloatingLabel from 'react-bootstrap/FloatingLabel'
@@ -8,7 +8,7 @@ import Button from "react-bootstrap/Button"
 import Axios from "axios"
 import { useNavigate } from "react-router-dom"
 import DatePicker from "react-date-picker"
-import {format, add, parseISO} from "date-fns"
+import {format, add} from "date-fns"
 
 
 
@@ -17,8 +17,6 @@ export default function DodajVozilo() {
     
     const Navigate = useNavigate()
     const [value, setValue] = useState(new Date())
-   // const [istekReg, setIstekReg] = useState(new Date())
-   const [istek, setIstek] = useState(new Date())
     const [formData, setFormData] = useState({
 		marka: "", model: "", vrsta: "", registracija: value,  slika: ""
 	})
@@ -38,7 +36,7 @@ export default function DodajVozilo() {
         })
         
     }
-    const dodajVozilo = (marka,model,vrsta,registracija,istek,slika) => {
+    const addVehicle = (marka,model,vrsta,registracija,istek,slika) => {
         var params = new URLSearchParams();
         
         
@@ -48,7 +46,7 @@ export default function DodajVozilo() {
          params.append('registracija', registracija);
          params.append('istek_registracije', istek);
          params.append('slika', slika);
-         Axios.post("http://localhost/voznipark/src/API/dodaj.php", params)
+         Axios.post("http://localhost/voznipark/src/API/addVehicle.php", params)
          .then((response) => {
 			
                 console.log(response.data)
@@ -62,28 +60,27 @@ export default function DodajVozilo() {
         switch(formData.vrsta) {
             case "Automobil":
             brojka = 1;
-            console.log("Ušlo auto/kamion")
             break;
 
             case "Kamion":
             brojka = 1;
-            console.log("Ušlo auto/kamion")
             break;
 
             case "Motocikl":
             brojka = 2;
-            console.log("Ušlo motor")
             break;
 
             case "Radni stroj":
             brojka = 3;
-            console.log("Ušlo stroj")
             break;
+
+            default:
+                alert("Error!");
+
 
         }
         
-        dodajVozilo(formData.marka, formData.model, formData.vrsta, format(value, 'yyyy-MM-dd'), format(add(value, {years:brojka}), 'yyyy-MM-dd'), formData.slika)
-		console.log(formData);
+        addVehicle(formData.marka, formData.model, formData.vrsta, format(value, 'yyyy-MM-dd'), format(add(value, {years:brojka}), 'yyyy-MM-dd'), formData.slika)
 
     }
     
@@ -91,10 +88,10 @@ export default function DodajVozilo() {
         <>
         <Navbar />
         <Form className = "dodajform">
-        <h3 className = "dodajform-title">Dodaj vozilo!</h3>
+        <h3 className = "dodajform-title">Add a vehicle</h3>
         <Form.Group className = "mb-4">
             <FloatingLabel
-            label = "Marka vozila">
+            label = "Brand">
 
             <Form.Control 
             onChange = {handleChange} 
@@ -108,7 +105,7 @@ export default function DodajVozilo() {
 
         <Form.Group className = "mb-4">
             <FloatingLabel
-            label = "Model vozila"
+            label = "Vehicle model"
             >
             <Form.Control 
             onChange = {handleChange} 
@@ -124,10 +121,10 @@ export default function DodajVozilo() {
             
             <Form.Select 
             onChange = {handleChange} 
-            name = "vrsta" 
+            name = "Vehicle type" 
             value = {formData.vrsta}
             >
-                <option>Vrsta vozila</option>
+                <option>Vehicle type</option>
                 <option>Automobil</option>
                 <option>Motocikl</option>
                 <option>Kamion</option>
@@ -137,7 +134,7 @@ export default function DodajVozilo() {
         </Form.Group>
 
         <Form.Group className = "mb-0">
-        <Form.Label>Odaberi datum registracije</Form.Label>
+        <Form.Label>Registration date</Form.Label>
         </Form.Group>
         <Form.Group className = "mb-4">
         <DatePicker
@@ -153,7 +150,7 @@ export default function DodajVozilo() {
         </Form.Group>
 
         <Form.Group className = "mb-4">
-            <Form.Label>Odaberi sliku vozila!</Form.Label>
+            <Form.Label>Enter vehicle image URL</Form.Label>
             <Form.Control 
             onChange = {handleChange} 
             type="text" 
@@ -161,7 +158,7 @@ export default function DodajVozilo() {
             value = {formData.slika}
             />
         </Form.Group>
-        <Button variant = "success" onClick = {handleSubmit}>Dodaj</Button>
+        <Button variant = "success" onClick = {handleSubmit}>Submit</Button>
         </Form>
         </>
            

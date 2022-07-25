@@ -10,14 +10,13 @@ export default function Navbar() {
 
     return (
         <nav className = "navbar">
-            <a href="/Pocetna"><h3 className = "navbar-logo">GTA</h3></a>
+            <a href="/Home"><h3 className = "navbar-logo">GTA</h3></a>
             <div className = "navbar-routing">
-                <Link style = {{textDecoration:'none', color:'black'}}to = "/Pocetna/Dodaj"><h3 className = "navbar-link" >Dodaj vozilo</h3></Link>
-                <Link style = {{textDecoration:'none', color:'black'}}to = "/Pocetna/Zaduzi"><h3 className = "navbar-link">Zaduži vozilo</h3></Link>
-                <Link style = {{textDecoration:'none', color:'black'}}to = "/Pocetna/Vrati"><h3 className = "navbar-link">Vrati vozilo</h3></Link>
+                <Link style = {{textDecoration:'none', color:'black'}}to = "/Home/Add"><h3 className = "navbar-link" >Add new vehicle</h3></Link>
+                <Link style = {{textDecoration:'none', color:'black'}}to = "/Home/Rent"><h3 className = "navbar-link">Rent a vehicle</h3></Link>
+                <Link style = {{textDecoration:'none', color:'black'}}to = "/Home/Return"><h3 className = "navbar-link">Return a vehicle</h3></Link>
             </div>
-            {/* <h3 className = "navbar-title">Vozni park</h3> */}
-            <Button variant = "outline-dark" className = "navbar-logout" onClick = {logout}>Odjavi se</Button>
+            <Button variant = "outline-dark" className = "navbar-logout" onClick = {logout}>Sign out</Button>
             
         </nav>
     )

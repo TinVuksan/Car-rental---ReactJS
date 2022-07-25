@@ -1,6 +1,6 @@
 import React from "react"
 import "../Navbar/Navbar.css"
-import "./Pocetna.css"
+import "./Homepage.css"
 import Navbar from "../Navbar/Navbar"
 import Datatable from "../Datatable/Datatable"
 import Card from "../Card/Card"
@@ -27,7 +27,7 @@ export default function Pocetna() {
                 />
             }
 
-        label = "Promjena prikaza"
+        label = "View mode toggle"
         />
         
         {checked ? 
