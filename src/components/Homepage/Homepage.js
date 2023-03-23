@@ -13,7 +13,6 @@ export default function Pocetna() {
     const [checked, setChecked] = useState(true)
     const handleChange = (event) => {
         setChecked(event.target.checked)
-        console.log(checked)
     }
 
     return (

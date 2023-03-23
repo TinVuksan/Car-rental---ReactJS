@@ -4,15 +4,15 @@
 .loginbox
 {
   
-  	-webkit-border-radius: 10px 10px 10px 10px;
-  	border-radius: 10px 10px 10px 10px;
-  	background: #fff;
+  -webkit-border-radius: 10px 10px 10px 10px;
+  border-radius: 10px 10px 10px 10px;
+  background: #fff;
 	margin: 13vh auto;
 	width:40vw;
-	height:50vh;
-  	padding: 20px;
-  	-webkit-box-shadow: 5px 25px 60px 5px rgba(0,0,0,0.4);
-  	box-shadow: 5px 25px 60px 5px rgba(0,0,0,0.4);
+	height:fit-content;
+  padding: 20px;
+  -webkit-box-shadow: 5px 25px 60px 5px rgba(0,0,0,0.4);
+  box-shadow: 5px 25px 60px 5px rgba(0,0,0,0.4);
 	position:relative;
 	
 

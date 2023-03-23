@@ -29,7 +29,7 @@ export default function Card(props) {
     }
 
     const vratiVozilo = (id) => {
-        if(window.confirm("Zelite li vratiti vozilo broj " + id + "?")) {
+        if(window.confirm("Do you really want to return the vehicle no. " + id + "?")) {
             
                 vratiConfirm(id)
             }
@@ -59,8 +59,8 @@ export default function Card(props) {
             <h1 className = "card-title">{data.Marka} {" "} {data.Model}</h1>
             
             <div className = "card-vrati-infogroup">
-                <h3>Registriran od: {format(new Date(data.Registracija), 'dd.MM.yyyy')}</h3>
-                <h3>Registriran do: {format(new Date(data.Istek_registracije), 'dd.MM.yyyy')}</h3>
+                <h3>Registration date: {format(new Date(data.Registracija), 'dd.MM.yyyy')}</h3>
+                <h3>Registration expires: {format(new Date(data.Istek_registracije), 'dd.MM.yyyy')}</h3>
             </div>
             <div className = "card-vrati-footer">
                 <Button className = "card-vrati-btn" variant = "info" onClick = {() => vratiVozilo(data.idVozila)}>Return vehicle</Button>
